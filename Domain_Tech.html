@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Domain Tech - Tecnología y productos anime al mejor precio. Smartwatches, audífonos, figuras de colección y más.">
+    <title>Domain Tech - Tecnología y Anime | Productos Importados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #080530;
+            --color-secondary: #ffffff;
+            --color-accent: #FF2D75; /* Cambiado a rosa/anime */
+            --color-dark: #04010e;
+            --color-light: #f1e7e7;
+            --color-tech: #00F0FF; /* Azul tecnológico */
+            --transition-time: 0.4s;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--color-light);
+            overflow-x: hidden;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: all var(--transition-time);
+        }
+        
+        /* Header mejorado */
+        header {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            min-height: 600px;
+            width: 100%;
+            display: flex;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                            url('https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            overflow: hidden;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .header-content {
+            text-align: center;
+            z-index: 2;
+            padding: 20px;
+            max-width: 800px;
+        }
+        
+        h1 {
+            margin: 0;
+            padding: 0;
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 3px;
+            color: var(--color-tech);
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            animation: elegantAppearance 1.8s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s forwards;
+            margin-bottom: 20px;
+        }
+        
+        .header-subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            color: white;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 1s forwards;
+            font-weight: 300;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            margin-bottom: 40px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--color-accent);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s forwards;
+            box-shadow: 0 4px 15px rgba(255, 45, 117, 0.4);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 45, 117, 0.6);
+            background-color: #ff1a6b;
+        }
+        
+        /* Sección de productos */
+        .product-section {
+            padding: 80px 20px;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--color-primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--color-accent);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #f5f5f5;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-category {
+            color: var(--color-accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--color-dark);
+        }
+        
+        .product-price {
+            font-weight: 700;
+            color: var(--color-primary);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer mejorado */
+        footer {
+            padding: 60px 20px 30px;
+            text-align: center;
+            background-color: var(--color-dark);
+            color: white;
+            font-size: 1rem;
+            position: relative;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--color-tech);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: white;
+            transition: color var(--transition-time);
+        }
+        
+        .footer-column a:hover {
+            color: var(--color-tech);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            grid-column: 1 / -1;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* Animaciones */
+        @keyframes elegantAppearance {
+            0% { opacity: 0; transform: translateY(50px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        /* Estilos para el carrito de compras */
+        .buy-button {
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-weight: 600;
+        }
+        
+        .buy-button:hover {
+            background-color: var(--color-tech);
+            transform: translateY(-2px);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--color-dark);
+        }
+        
+        #cart-icon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--color-accent);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 999;
+        }
+        
+        #cart-count {
+            font-size: 14px;
+            margin-left: 2px;
+        }
+        
+        .cart-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        #cart-total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 20px 0;
+            text-align: right;
+        }
+        
+        #checkout-btn {
+            background-color: var(--color-accent);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        #checkout-btn:hover {
+            background-color: #ff1a6b;
+            transform: translateY(-2px);
+        }
+        
+        /* Botón de WhatsApp */
+        #whatsapp-button {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        
+        #whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        
+        #whatsapp-button img {
+            width: 35px;
+            height: 35px;
+        }
+        
+        /* Modal de detalles del producto */
+        .product-modal-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .product-modal-header {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .product-modal-images {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        
+        .product-modal-images img {
+            height: 200px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+        
+        .product-modal-main-image {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+        }
+        
+        .product-modal-info h2 {
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+        
+        .product-modal-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-accent);
+            margin: 15px 0;
+        }
+        
+        .product-modal-category {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .product-modal-description {
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .product-modal-features {
+            margin: 20px 0;
+        }
+        
+        .product-modal-features h3 {
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+        
+        .product-modal-features ul {
+            padding-left: 20px;
+        }
+        
+        .product-modal-features li {
+            margin-bottom: 8px;
+        }
+        
+        .product-modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .product-modal-actions .buy-button {
+            width: auto;
+            flex-grow: 1;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .modal-content {
+                margin: 10% auto;
+                width: 90%;
+                padding: 20px;
+            }
+            
+            #whatsapp-button {
+                bottom: 160px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            #cart-icon {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .product-modal-content {
+                gap: 20px;
+            }
+            
+            .product-modal-images img {
+                height: 150px;
+            }
+            
+            .product-modal-main-image {
+                height: 200px;
+            }
+            
+            .product-modal-actions {
+                flex-direction: column;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .product-modal-header {
+                flex-direction: row;
+            }
+            
+            .product-modal-images {
+                flex-direction: column;
+                width: 100px;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+            
+            .product-modal-images img {
+                width: 100%;
+                height: auto;
+                cursor: pointer;
+            }
+            
+            .product-modal-main-content {
+                display: flex;
+                gap: 30px;
+            }
+            
+            .product-modal-main-image-container {
+                flex: 1;
+            }
+            
+            .product-modal-info {
+                flex: 1;
+            }
+        }
+
+        .nosotros{
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+            padding: 5vh;
+        }
+        .nosotros-title{
+            text-align: center;
+            margin: auto;
+            margin-top: 2rem;
+        }
+        .nosotros-subtitle{
+            text-align: center;
+            margin: auto;
+            margin-top: 2rem;
+        }
+        .nosotros-text{
+            text-align: justify;
+        }
+        .logos{
+            height: 3vh;
+            width: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <header id="inicio">
+        <div class="header-content">
+            <h1>Domain Tech</h1>
+            <p class="header-subtitle">Tecnología de vanguardia y productos anime exclusivos</p>
+            <a href="#productos" class="cta-button">Ver Catálogo</a>
+        </div>
+    </header>
+    
+    <main>
+        <section id="productos" class="product-section">
+            <h2 class="section-title">Nuestros Productos</h2>
+            <div class="product-grid">
+                <!-- Producto 1 -->
+                <div class="product-card" data-product-id="1">
+                    <div class="product-image" style="background-image: url('https://acdn-us.mitiendanube.com/stores/004/109/063/products/d_nq_np_868114-mla77224401152_072024-o-35e91a5974687ba42917369712342957-640-0-3ded3548ddf89c0c6e17467103038600-640-0.webp');"></div>
+                    <div class="product-info">
+                        <span class="product-category">Parlantes</span>
+                        <h3 class="product-title">Parlante bluetooth H006</h3>
+                        <p class="product-price">$14000</p>
+                        <button class="buy-button">Agregar al carrito</button>
+                    </div>
+                </div>
+                
+                <!-- Producto 2 -->
+                <div class="product-card" data-product-id="2">
+                    <div class="product-image" style="background-image: url('https://acdn-us.mitiendanube.com/stores/004/109/063/products/producto-only-2025-05-26t121405-925-e0aebad8334f96e53217488888719119-640-0.webp')"></div>
+                    <div class="product-info">
+                        <span class="product-category">Parlantes</span>
+                        <h3 class="product-title">Parlante 3"MODS-907 Mini valija</h3>
+                        <p class="product-price">$10000</p>
+                        <button class="buy-button">Agregar al carrito</button>
+                    </div>
+                </div>
+                
+                <!-- Producto 3 -->
+                <div class="product-card" data-product-id="3">
+                    <div class="product-image" style="background-image: url('https://acdn-us.mitiendanube.com/stores/004/109/063/products/blanc-038-afd01239e7b3e4249017442866760693-640-0.webp')"></div>
+                    <div class="product-info">
+                        <span class="product-category">Parlantes</span>
+                        <h3 class="product-title">Parlante 2" Boch MODS-903</h3>
+                        <p class="product-price">$10000</p>
+                        <button class="buy-button">Agregar al carrito</button>
+                    </div>
+                </div>
+                
+                <!-- Producto 4 -->
+                <div class="product-card" data-product-id="4">
+                    <div class="product-image" style="background-image: url('https://acdn-us.mitiendanube.com/stores/004/109/063/products/fb2-42-27bef9358d1d0ee36e17456125889647-1024-1024.jpg');"></div>
+                    <div class="product-info">
+                        <span class="product-category">Smartwatch</span>
+                        <h3 class="product-title">Smartwatch D20 MOD-006</h3>
+                        <p class="product-price">$14000</p>
+                        <button class="buy-button">Agregar al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="product-card" data-product-id="5">
+                    <div class="product-image" style="background-image: url('https://acdn-us.mitiendanube.com/stores/004/109/063/products/d_nq_np_825457-mla75124143788_032024-o-90d85dd1dfc5b1778717359228981557-480-0.webp');"></div>
+                    <div class="product-info">
+                        <span class="product-category">Smartwatch</span>
+                        <h3 class="product-title">Smartwatch D18 MOD-022</h3>
+                        <p class="product-price">$12500</p>
+                        <button class="buy-button">Agregar al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="product-card" data-product-id="6">
+                    <div class="product-image" style="background-image: url('https://acdn-us.mitiendanube.com/stores/004/109/063/products/blanc-015-9e73c21b4396eb946617442877165344-640-0.webp');"></div>
+                    <div class="product-info">
+                        <span class="product-category">Smartwatch</span>
+                        <h3 class="product-title">Smartwatch M8</h3>
+                        <p class="product-price">$12000</p>
+                        <button class="buy-button">Agregar al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 7 -->
+                <div class="product-card" data-product-id="7">
+                    <div class="product-image" style="background-image: url('https://acdn-us.mitiendanube.com/stores/004/109/063/products/blanc-187-dd2a07cd329fec171117442913718829-640-0.webp');"></div>
+                    <div class="product-info">
+                        <span class="product-category">Accesorios</span>
+                        <h3 class="product-title">Cargador con cable 3.8 V8 con 2 USB IB-3801</h3>
+                        <p class="product-price">$6000</p>
+                        <button class="buy-button">Agregar al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 8 -->
+                <div class="product-card" data-product-id="8">
+                    <div class="product-image" style="background-image: url('https://acdn-us.mitiendanube.com/stores/004/109/063/products/1740053315699f892344b40a302cd1c01363298b5c-jpg-d07ff5b622d15fa54f17418935960230-480-0.webp');"></div>
+                    <div class="product-info">
+                        <span class="product-category">Accesorios</span>
+                        <h3 class="product-title">Cable USB tipo C MODS-950</h3>
+                        <p class="product-price">$3000</p>
+                        <button class="buy-button">Agregar al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 9 -->
+                <div class="product-card" data-product-id="9">
+                    <div class="product-image" style="background-image: url('https://acdn-us.mitiendanube.com/stores/004/109/063/products/diseno-sin-titulo-73-02ee49d3584b51081017500846768704-640-0.webp');"></div>
+                    <div class="product-info">
+                        <span class="product-category">TV</span>
+                        <h3 class="product-title">Smart TV Box ultra HD 4K</h3>
+                        <p class="product-price">$44250</p>
+                        <button class="buy-button">Agregar al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 10 -->
+                <div class="product-card" data-product-id="10">
+                    <div class="product-image" style="background-image: url('https://acdn-us.mitiendanube.com/stores/004/109/063/products/1653053388d3219a26dc8b6545a2cb92531e51c950-c507aa951c6fd911b317508746714571-480-0.webp');"></div>
+                    <div class="product-info">
+                        <span class="product-category">Parlantes</span>
+                        <h3 class="product-title">Parlante T5</h3>
+                        <p class="product-price">$10000</p>
+                        <button class="buy-button">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="nosotros">
+            <div class="nosotros-container">
+                <h2 class="nosotros-title">Sobre Nosotros | Domain Tech</h2>
+
+                <p class="nosotros-text">En Domain Tech, no solo vendemos tecnología, sino que compartimos nuestra pasión por ella. Somos un emprendimiento familiar fundado por dos hermanos con un objetivo claro: crecer, innovar y disfrutar del camino mientras llevamos productos de calidad a nuestros clientes.</p>
+
+                <h3 class="nosotros-subtitle">Nuestra Historia</h3>
+                <p class="nosotros-title">Todo comenzó con una idea sencilla: unir nuestra fascinación por la tecnología y el deseo de construir algo propio. Lo que empezó como un proyecto pequeño hoy se transforma en Domain Tech, un espacio donde ofrecemos dispositivos cuidadosamente seleccionados, pensando en rendimiento, diseño y accesibilidad.</p>
+
+                <h3 class="nosotros-subtitle">Nuestra Filosofía</h3>
+                <p class="nosotros-text">Tecnología con propósito: Cada producto que elegimos tiene que cumplir con altos estándares de calidad y utilidad.</p>
+
+                <p class="nosotros-text">Atención personalizada: Nos encanta asesorarte y resolver tus dudas, porque creemos en la confianza y cercanía con nuestros clientes.</p>
+
+                <p class="nosotros-text">Crecimiento constante: Aprendemos día a día para mejorar y ampliar nuestro catálogo, siempre con entusiasmo y dedicación.</p>
+
+                <h3 class="nosotros-subtitle">¿Por qué elegirnos?</h3>
+                <p class="nosotros-text">Productos probados: Probamos y seleccionamos cada artículo antes de ofrecerlo.</p>
+
+                <p class="nosotros-text">Precios competitivos: Tecnología de vanguardia sin dejar de ser accesible.</p>
+
+                <p class="nosotros-text">Compromiso real: No somos una tienda más; somos una familia que valora cada interacción con vos.</p>
+
+                <p class="nosotros-text">Domain Tech es más que un emprendimiento: es nuestro sueño hecho realidad.</p>
+                <h2 class="nosotros-title">¡Gracias por ser parte de esta aventura! 🚀</h2>
+
+                <h3 class="nosotros-subtitle">— El equipo de Domain Tech</h3>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Modal del Carrito -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Tu Carrito</h2>
+            <div id="cart-items"></div>
+            <div id="cart-total">Total: $0</div>
+            <button id="checkout-btn">Finalizar Compra</button>
+        </div>
+    </div>
+    
+    <!-- Modal de Detalles del Producto -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="product-modal-content" id="product-modal-content">
+                <!-- Contenido dinámico se insertará aquí -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Icono del Carrito -->
+    <div id="cart-icon">🛒 <span id="cart-count">0</span></div>
+    
+    <!-- Botón de WhatsApp -->
+    <a id="whatsapp-button" href="https://wa.me/5493413112245" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Domain Tech</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/500px-Instagram_icon.png" alt="logo-ig" class="logos"></a>
+                    <a href="https://www.facebook.com/profile.php?id=61578693812264" aria-label="Facebook"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Facebook_logo_%28square%29.png/960px-Facebook_logo_%28square%29.png" alt="logo-facebook" class="logos"></a>
+                    <a href="https://wa.me/5493413112245" aria-label="WhatsApp"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="logo-wt" class="logos"></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Enlaces</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="https://wa.me/5493413112245">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><a href="mailto:domaintecht@gmail.com">domaintecht@gmail.com</a></li>
+                    <li><a href="tel:+5493413112245">+54 9 341 311-2245</a></li>
+                    <li>Rosario, Santa Fe - Argentina</li>
+                </ul>
+            </div>
+            <div class="copyright">
+                © <span id="current-year">2025</span> Domain Tech. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Base de datos de productos (simulada)
+        const productsDB = {
+            1: {
+                id: 1,
+                name: "Parlante bluetooth H006",
+                category: "Parlantes",
+                price: 14000,
+                images: [
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/d_nq_np_868114-mla77224401152_072024-o-35e91a5974687ba42917369712342957-640-0-3ded3548ddf89c0c6e17467103038600-480-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/d_nq_np_851968-mla76963834697_062024-o-fc23a240894dff1a5f17369712342289-640-0-d1e4f99fb8b8a9759717467103038890-480-0.webp",
+                ],
+                description: "E¡Lleva tu música a todas partes con el Parlante Bluetooth Resistantex! Diseñado para resistir los desafíos del día a día, este altavoz portátil combina durabilidad, potencia y versatilidad en un diseño compacto y moderno.",
+                features: [
+                    "A PRUEBA DE GOLPES Y POLVO: Está hecho de materiales duraderos.",
+                    "COMPATIBILIDAD: Computadoras portátiles o teléfonos inteligentes con Bluetooth.",
+                    "MICRÓFONO: Incorporado",
+                    "EFICAZ: Funcionamiento rápido y estable, sin preocupaciones por la pérdida de señal.",
+                    "BLUETOOTH: V4.2",
+                    "FUNCIÓN DE ALTAVOZ Y MANOS LIBRES",
+                    "Distancia de transmisión: 10 m",
+                    "Duración de la carga: 2-3 hs",
+                    "Con entrada para tarjeta SD con memoria USB",
+                    "Voltaje / capacidad de la batería: 1000 MAH.",
+                    "Función de tarjeta TF / FM: compatible",
+                    "Canal de producto: 2.0 estéreo",
+                    "Potencia de salida: 5 W * 2",
+                    "Sensibilidad: 80dB",
+                    "Resolución: 90dB",
+                    "Frecuencia: entre 100 hz y 20 KHZ",
+                    "Color: Negro",
+                    "Peso: 340 g",
+                    "Dimensiones: 17,8 x 7,2 x 7,1 cm",
+                    "Material: Plástico",
+                    ]
+            },
+            2: {
+                id: 2,
+                name: "Parlante 3 MODS-907 Mini valija",
+                category: "Parlantes",
+                price: 15999,
+                images: [
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/producto-only-2025-05-26t121405-925-e0aebad8334f96e53217488888719119-480-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/174794151975137592cf0f87ee3976835600a19737-80fe0549c7e8f5d2d117488888716119-480-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/174794152347525f05fbe06632d3d64456eaa0e001-545eb99eebe64943fb17488888716856-480-0.webp"
+                ],
+                description: "¡Experimenta la música como nunca con el Parlante Bluetooth 3” de 500W! Diseñado para quienes buscan potencia, versatilidad y estilo, este altavoz portátil ofrece un sonido impactante con graves profundos y agudos cristalinos, ideal para fiestas, viajes o disfrutar en casa.",
+                features: [
+                    "PARLANTE 3” BT",
+                    "POTENCIA: 500W",
+                    "CONEXIÓN: BLUETOOTH 5.0 / CABLE AUX 3.5MM / RADIO FM / MICROSD / TWS",
+                    "ALCANCE BLUETOOTH: 10M BLUETOOTH",
+                    "BLUETOOTH: V4.2",
+                    "TIPO DE CARGA: TC",
+                    "CAPACIDAD DE BATERÍA: 800MAH",
+                    "VOLTAJE DE BATERÍA: 3,7V",
+                    "DURACIÓN DE BATERÍA: 5 HORAS",
+                    "ILUMINACIÓN: SI",
+                    "DISPLAY: NO TIENE",
+                    "ACCESORIOS: CABLE DE CARGA, MANUAL",
+                    "MATERIAL: PLÁSTICO ABS",
+                    "MEDIDAS: 14*10*8",
+                    ]
+            },
+            3: {
+                id: 3,
+                name: "Parlante 2 Boch MODS-903",
+                category: "Parlantes",
+                price: 12499,
+                images: [
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/blanc-038-afd01239e7b3e4249017442866760693-480-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/blanc-039-63198fd8a282b6012017442866753408-480-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/lf-46-9ec65cb845e8b1599e17441413522893-480-0.webp"
+                ],
+                description: "¡Vive la música con todo tu estilo! Presentamos el Parlante Bluetooth con Show Rítmico de Luces, el compañero perfecto para llevar la fiesta a cualquier lugar. Con un alcance Bluetooth de 10 metros, podrás conectarte fácilmente desde tu celular, tablet o laptop sin perder calidad de sonido. ✨ Show Rítmico de Luces LED: Luces vibrantes que se sincronizan con el ritmo de tu música, creando un ambiente único para fiestas, reuniones o momentos especiales. 🎶 Múltiples Opciones de Conexión: Bluetooth para una conexión inalámbrica rápida y estable. Tarjeta de Memoria (MicroSD) y USB (Pendrive) para reproducir tu música directamente sin necesidad de dispositivos externos. 🔊 Sonido Claro y Potente: Diseñado para ofrecer un audio equilibrado con graves definidos y agudos nítidos. 💡 Portátil y Práctico: Llévalo contigo a la playa, camping, fiestas o simplemente disfrútalo en casa. ¡Convierte cualquier momento en una experiencia única con este Parlante Bluetooth con Luces LED! 🎵🎉",
+                features: [
+                    "10m de alcance Bluetooth",
+                    "Show Ritmico de luces",
+                    "Opcion Bluetooth",
+                    "Tarjeta de Memoria o Pendrive",
+                ]
+            },
+            4: {
+                id: 4,
+                name: "Smartwatch D20 MOD-006",
+                category: "Smartwatch",
+                price: 14000,
+                images: [
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/fb2-42-27bef9358d1d0ee36e17456125889647-480-0.jpg",
+                    "https://d1a9qnv764bsoo.cloudfront.net/stores/002/977/798/rte/d20-11-807bdad2034adbe3b116088787957356-1024-1024.webp",
+                    "https://d1a9qnv764bsoo.cloudfront.net/stores/002/977/798/rte/cargad20.jpg"
+                ],
+                description: "Lleva tu rendimiento al siguiente nivel con este Smartwatch Inteligente de 1.3’’, diseñado para monitorear tu salud y mantenerte conectado. Con una pantalla táctil LCD clara y sensible, podrás acceder fácilmente a todas sus funciones con solo un toque.",
+                features: [
+                    "Pantalla táctil LCD de 1.3.''",
+                    "Conectividad por Bluetooth.",
+                    "Capacidad de la memoria interna de 128MB.",
+                    "Sensores incluidos: pulsómetro, pulsioxímetro, podómetro.",
+                    "Malla intercambiable por otros colores, no incluidos en el producto.",
+                    "Notificaciones: Whatsapp, instagram, llamadas.",
+                ]
+            },
+            5: {
+                id: 5,
+                name: "Smartwatch D18 MOD-022",
+                category: "Smartwatch",
+                price: 12500,
+                images: [
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/d_nq_np_825457-mla75124143788_032024-o-90d85dd1dfc5b1778717359228981557-480-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/165c064a-b8eb-4668-a196-d36a9fe2724b1-93f0446f97f3ac49cb16832467175105-1024-1024-ca9616cec75b5ac6ef17501710688547-640-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/img_35501-77d1b4d6f1defb876916591369538031-1024-1024-08fba1df2ca07119ff17501710686799-480-0.webp"
+                ],
+                description: "Lleva tu rendimiento al siguiente nivel con este Smartwatch Inteligente de 1.3’’, diseñado para monitorear tu salud y mantenerte conectado. Con una pantalla táctil LCD clara y sensible, podrás acceder fácilmente a todas sus funciones con solo un toque.",
+                features: [
+                    "Pantalla táctil LCD de 1.3.''",
+                    "Conectividad por Bluetooth.",
+                    "Capacidad de la memoria interna de 128MB.",
+                    "Sensores incluidos: pulsómetro, pulsioxímetro, podómetro.",
+                    "Malla intercambiable por otros colores, no incluidos en el producto.",
+                    "Notificaciones: Whatsapp, instagram, llamadas.",
+                ]
+            },
+            6: {
+                id: 6,
+                name: "Smartwatch M8",
+                category: "Smartwatch",
+                price: 12000,
+                images: [
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/blanc-015-9e73c21b4396eb946617442877165344-640-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/blanc-010-c6bc2564ee4781061817442877176595-480-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/blanc-014-1fe043f9ad8fe2423e17442877166362-480-0.webp"
+                ],
+                description: "Lleva tu estilo de vida al siguiente nivel con este Smartwatch Multifuncional, diseñado para mantenerte conectado, activo y saludable. Con una pantalla táctil HD de 1.3’’ (320×240) y un elegante diseño en aleación resistente, este reloj inteligente combina tecnología avanzada y funcionalidad para tu día a día.",
+                features: [
+                    "Reloj despertador", 
+                    "Calendario", 
+                    "seguimiento de forma", 
+                    "Monitor de ritmo cardíaco", 
+                    "Mensaje emergente", 
+                    "Rastreador de sueño", 
+                    "Recordatorio de mensajes", 
+                    "Sangre monitor de oxígeno, Calorías", 
+                    "Distancia, Llamadas, Alarmas, y mucho más!!",
+                    "Compatible tanto para Android como iOS",
+                    "Pantalla táctil: resolución de la pantalla 320×240",
+                    "Material de la caja:Aleación",
+                    "Bluetooth 5.0 – BT5.0",
+                    "Tamaño de paquete único: 12.5X8.5X3 cm.",
+                ]
+            },
+            7: {
+                id: 7,
+                name: "Cargador con cable 3.8 V8 con 2 USB IB-3801",
+                category: "Accesorios",
+                price: 6000,
+                images: [
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/blanc-187-dd2a07cd329fec171117442913718829-640-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/blanc-186-08ad8d54148b722f3717442913718878-480-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/6-b0bcf11da92b97c38217429315480773-480-0.jpg"
+                ],
+                description: "Optimiza tu tiempo de carga con el Cargador Rápido iBek de 3.8A, diseñado para ofrecer energía rápida y segura a tus dispositivos. Con doble puerto USB tipo A y ficha tipo C, este cargador de pared es ideal para conectar múltiples dispositivos simultáneamente sin perder potencia.",
+                features: [
+                    "Marca Ibek.",
+                    "Carga rapida de 3.8 amp.",
+                    "Doble entrada de puerto USB tipo A.",
+                    "Ficha tipo C.",
+                    "Cable USB-C incluido",
+                    "Voltage de salida 5V.",
+                    "Cargador de pared."
+                ]
+            },
+            8: {
+                id: 8,
+                name: "Cable USB tipo C MODS-950",
+                category: "Accesorios",
+                price: 3000,
+                images: [
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/blanc-184-87fecaf7d15f0c88e017442262978435-640-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/1740053315699f892344b40a302cd1c01363298b5c-jpg-d07ff5b622d15fa54f17418935960230-480-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/1740053299e7204a6edc768ee6130baa236718b36b-f81dae76233059919617418935958885-480-0.webp"
+                ],
+                description: "Tus clientes necesitan carga rápida y eficiente, y este cable lo garantiza con 80 hilos de cobre bañados en aluminio y 4mm de grosor para una transmisión estable.Con 1 metro de longitud y terminal USB – Tipo C, es ideal para el uso diario. Su diseño en PVC inyectado y su variedad de colores negro, lila, rosa y celeste lo convierten en una opción funcional y atractiva.",
+                features: [
+                    ""
+                ]
+            },
+            9: {
+                id: 9,
+                name: "Smart TV Box ultra HD 4K",
+                category: "TV",
+                price: 44250,
+                images: [
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/diseno-sin-titulo-73-02ee49d3584b51081017500846768704-640-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/ac01db23-26ce-4a56-b003-0077dab1a244-fedc114e0ffee76ce717514833838464-480-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/c4c1ee4f-e36a-4968-92c5-f23480f065cf-faf1e33dedf48e6a6617514833838305-480-0.webp"
+                ],
+                description: "Descubre una experiencia visual increíble con esta Smart TV Android 4K, diseñada para ofrecerte imágenes nítidas, colores vibrantes y un rendimiento fluido. Con su sistema operativo Android, tendrás acceso a todas tus aplicaciones favoritas, como Netflix, YouTube, Disney+ y más, directamente desde tu televisor.",
+                features: [
+                    "Tipo de control remoto: Estándar",
+                    "Reproduce imágenes y videos en 4K.",
+                    "Sistema operativo Android ",
+                    "Con conectividad wifi y bluetooth.",
+                    "Compatible con televisores.",
+                    "Interfaz de conexión HDMI.",
+                    "Puerto y tipo de conector: USB."
+                ]
+            },
+            10: {
+                id: 10,
+                name: "Parlante T5",
+                category: "Parlantes",
+                price: 10000,
+                images: [
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/1653053388d3219a26dc8b6545a2cb92531e51c950-c507aa951c6fd911b317508746714571-480-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/speaker-bt-colors-t3_10809_t3_4-9f4b5de64efdb3621d17508746715824-480-0.webp",
+                    "https://acdn-us.mitiendanube.com/stores/004/109/063/products/1653052996ad1e9b9be400e37ee3b1dadaa5ba7961-1cabd727499d386fe917508746712426-480-0.webp"
+                ],
+                description: "Lleva tu música a todas partes con este altavoz portátil multifuncional, diseñado para ofrecerte calidad de sonido y practicidad en un diseño compacto. Con Bluetooth 4.2, reproducción desde tarjetas TF/USB y radio FM, este parlante es tu compañero ideal para el día a día, viajes o reuniones al aire libre.",
+                features: [
+                    "Conector tipo: TF / USB / MICRO",
+                    "Fuente de alimentación: Batería de litio incorporada",
+                    "Puerto de carga: Micro Usb",
+                    "Tamaño del producto: 92 x 92 x 46mm",
+                    "Peso del producto: 225 g",
+                    "Bluetooth versión: 4.2",
+                    "Formato de reproducción: MP3 / WMA / WAV",
+                    "Distancia bluetooth:hasta 10 m",
+                    "Soporta memoria: 16gb",
+                    "Parámetro de carga: 5V / 0.3A",
+                    "Reproducción de Bluetooth, llamadas con manos libres, tarjeta TF, disco U, radio FM.",
+                    "Duración de batería: 3 horas",
+                    "Tiempo de carga: 2-3 horas",
+                ]
+            },
+        };
+
+        // Actualizar año automáticamente
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Efecto de scroll suave para todos los enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Código para el carrito de compras
+        let cart = [];
+        
+        // Función para agregar productos al carrito
+        function addToCart(productId) {
+            const product = productsDB[productId];
+            cart.push({id: product.id, name: product.name, price: product.price});
+            updateCart();
+            
+            // Mostrar notificación
+            const notification = document.createElement('div');
+            notification.style.position = 'fixed';
+            notification.style.bottom = '180px';
+            notification.style.right = '30px';
+            notification.style.backgroundColor = 'var(--color-accent)';
+            notification.style.color = 'white';
+            notification.style.padding = '10px 20px';
+            notification.style.borderRadius = '5px';
+            notification.style.boxShadow = '0 3px 10px rgba(0,0,0,0.2)';
+            notification.style.zIndex = '1000';
+            notification.style.animation = 'fadeInOut 2s ease-out';
+            notification.textContent = `¡${product.name} agregado al carrito!`;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'fadeOut 0.5s ease-out forwards';
+                setTimeout(() => notification.remove(), 500);
+            }, 1500);
+        }
+        
+        // Actualizar el carrito
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+            
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                total += item.price;
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <p>${item.name} - $${item.price.toLocaleString()}</p>
+                `;
+                cartItems.appendChild(itemElement);
+            });
+            
+            cartCount.textContent = cart.length;
+            cartTotal.textContent = `Total: $${total.toLocaleString()}`;
+        }
+        
+        // Mostrar/ocultar modal del carrito
+        document.getElementById('cart-icon').addEventListener('click', () => {
+            document.getElementById('cart-modal').style.display = 'block';
+        });
+        
+        // Cerrar modales
+        document.querySelectorAll('.close-modal').forEach(closeBtn => {
+            closeBtn.addEventListener('click', function() {
+                this.closest('.modal').style.display = 'none';
+            });
+        });
+        
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', (event) => {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        });
+        
+        // Finalizar compra
+        document.getElementById('checkout-btn').addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío. Agrega productos antes de finalizar la compra.');
+                return;
+            }
+            
+            const telefono = '5493413112245'; // Reemplaza con tu número
+            let message = 'Hola, quiero comprar los siguientes productos:\n\n';
+            
+            cart.forEach(item => {
+                message += `- ${item.name} - $${item.price.toLocaleString()}\n`;
+            });
+            
+            message += `\nTotal: $${cart.reduce((sum, item) => sum + item.price, 0).toLocaleString()}`;
+            
+            const urlWhatsApp = `https://wa.me/${telefono}?text=${encodeURIComponent(message)}`;
+            window.open(urlWhatsApp, '_blank');
+            cart = [];
+            updateCart();
+            document.getElementById('cart-modal').style.display = 'none';
+        });
+        
+        // Configurar botones de compra para cada producto
+        document.querySelectorAll('.product-card').forEach(card => {
+            const button = card.querySelector('.buy-button');
+            const productId = card.getAttribute('data-product-id');
+            
+            button.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evitar que se active el click en la tarjeta
+                addToCart(productId);
+            });
+            
+            // Mostrar modal de detalles al hacer clic en la tarjeta
+            card.addEventListener('click', () => {
+                showProductModal(productId);
+            });
+        });
+        
+        // Mostrar modal de detalles del producto
+        function showProductModal(productId) {
+            const product = productsDB[productId];
+            const modalContent = document.getElementById('product-modal-content');
+            
+            modalContent.innerHTML = `
+                <div class="product-modal-header">
+                    <div class="product-modal-images">
+                        ${product.images.map(img => `<img src="${img}" alt="${product.name}" onclick="changeMainImage(this)">`).join('')}
+                    </div>
+                    <img src="${product.images[0]}" alt="${product.name}" class="product-modal-main-image" id="product-main-image">
+                </div>
+                <div class="product-modal-info">
+                    <span class="product-modal-category">${product.category}</span>
+                    <h2>${product.name}</h2>
+                    <div class="product-modal-price">$${product.price.toLocaleString()}</div>
+                    <p class="product-modal-description">${product.description}</p>
+                    
+                    <div class="product-modal-features">
+                        <h3>Características principales:</h3>
+                        <ul>
+                            ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="product-modal-actions">
+                        <button class="buy-button" onclick="addToCart(${product.id}); document.getElementById('product-modal').style.display='none'">Agregar al carrito</button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('product-modal').style.display = 'block';
+        }
+        
+        // Cambiar imagen principal en el modal
+        window.changeMainImage = function(imgElement) {
+            document.getElementById('product-main-image').src = imgElement.src;
+        };
+        
+        // Animación para notificaciones
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInOut {
+                0% { opacity: 0; transform: translateY(20px); }
+                20% { opacity: 1; transform: translateY(0); }
+                80% { opacity: 1; transform: translateY(0); }
+                100% { opacity: 0; transform: translateY(-20px); }
+            }
+            @keyframes fadeOut {
+                to { opacity: 0; transform: translateY(-20px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
