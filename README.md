@@ -1,7 +1,7 @@
 
 ---
 
-# 🔥 **3. README — Página de Ventas (Mini Ecommerce)**
+# Página de Ventas
 
 ```markdown
 # 🛒 Mini Ecommerce - Página de Ventas
@@ -23,9 +23,3 @@ https://pagina-de-ventas-plum.vercel.app/
 - Total dinámico  
 - Botón de compra por WhatsApp  
 - Diseño responsive  
-
-## 📦 Instalación
-1. Clonar el repositorio  
-2. Abrir `index.html` en tu navegador  
-
----
